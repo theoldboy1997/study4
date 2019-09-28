@@ -1,64 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <title>Scoped CSS Variables and JS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML5 logo</title>
+    <link href="./logo.css" type="text/css" rel="stylesheet">
+    <script src="./logo.js"></script>
 </head>
-
 <body>
-  <h2>Update CSS Variables with
- 
-  </h2>
+    <div class="bg">
+        <div class="beam" style="transform: rotate(5deg)"></div>
+        <div class="beam" style="transform: rotate(15deg)"></div>
+        <div class="beam" style="transform: rotate(25deg)"></div>
+        <div class="beam" style="transform: rotate(35deg)"></div>
+        <div class="beam" style="transform: rotate(45deg)"></div>
+        <div class="beam" style="transform: rotate(55deg)"></div>
+        <div class="beam" style="transform: rotate(65deg)"></div>
+        <div class="beam" style="transform: rotate(75deg)"></div>
+        <div class="beam" style="transform: rotate(85deg)"></div>
+        <div class="beam" style="transform: rotate(95deg)"></div>
+        <div class="beam" style="transform: rotate(105deg)"></div>
+        <div class="beam" style="transform: rotate(115deg)"></div>
+        <div class="beam" style="transform: rotate(125deg)"></div>
+        <div class="beam" style="transform: rotate(135deg)"></div>
+        <div class="beam" style="transform: rotate(145deg)"></div>
+        <div class="beam" style="transform: rotate(155deg)"></div>
+        <div class="white beam" style="transform: rotate(165deg)"></div>
+        <div class="white beam" style="transform: rotate(175deg)"></div>
+    <div class="logo" style="top: 120px; left:229px;">
+        <div class="d_shield1"></div>
+        <div class="d_shield2"></div>
+        <div class="d_shield3"></div>
+        <div class="d_shield4"></div>
+        <div class="d_shield5"></div>
+        <div class="d_shield6"></div>
+        <div style="transform: scale(0.82);left:31px;top:25px">
+            <div class="l_shield1"></div>
+            <div class="l_shield2"></div>
+            <div class="l_shield3"></div>
+        </div>
+        <div class="gray1"></div>
+        <div class="gray2"></div>
+        <div class="gray3"></div>
+        <div class="gray4"></div>
+        <div class="white1"></div>
+        <div class="white2"></div>
+        <div class="white3"></div>
+        <div class="white4"></div>
+        <div class="d_shield7"></div>
+        <div class="l_shield4"></div>
+        <img src="./HTML.PNG">
+        
+    </div>
+</div>
 
-  <div class="controls">
-    <label for="spacing">Spacing:</label>
-    <input id="spacing" type="range" name="spacing" min="0" max="200" value="10" data-sizing="px">
 
-    <label for="blur">Blur:</label>
-    <input id="blur" type="range" name="blur" min="0" max="25" value="10" data-sizing="px">
 
-    <label for="base">Base Color</label>
-    <input id="base" type="color" name="base" value="#8282e6">
-  </div>
 
-  <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
-
-  <style>
-    :root {
-      --spacing: 10px;
-      --blur: 10px;
-      --base: #8282e6;
-    }
-
-    img {
-      padding: var(--spacing);
-      background: var(--base);
-      filter: blur(var(--blur));
-    }
-
-    .highlight {
-      color: var(--base);
-    }
-
-    body {
-      text-align: center;
-      background: #193549;
-      color: white;
-      font-family: 'helvetica neue', sans-serif;
-      font-weight: 100;
-      font-size: 50px;
-    }
-
-    .controls {
-      margin-bottom: 50px;
-    }
-
-    input {
-      width: 100px;
-    }
-  </style>
-  <script src="./index.js"></script>
 </body>
-
 </html>
