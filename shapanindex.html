@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>沙盘演练</title>
+    <link href="./shapanmin.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <section class="qui-page">
+        <header class="qui-header" style="background:url(./img/首页1.png) ;">
+            <h1 style="color: whitesmoke;">沙盘演练</h1>
+        </header>
+        <br>
+        <section style="margin-left: 1050px;">
+            <span><a href="./R代码.zip"> R代码下载</a></span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span><a href="./数据集.zip">数据集</a></span>
+        </section>
+        <section class="container" style="width: 1100px;">
+            <br /><br />
+            <div class="flex">
+                <div  class="sy" style="color: whitesmoke; background: url(./img/首页4.png); width: 1080px; height: 600px; ">
+                        <div style="font-size: 22px; line-height: 35px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;网站简介：<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;近年来，随着计算机对数据的生成、收集、存贮和处理能力的大大提高，数据量与日俱增，传统的数据分析工具对海量数据的处理力不从心，数据挖掘技术应运而生。<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据挖掘的处理对象是大量的日常业务数据及科学研究和测量数据，而目前所进行的关于数据挖掘研究工作，大多着眼于数据挖掘算法的探讨而忽略了对数据预处理的研究。一些比较成熟的算法对其处理的数据集合一般都有一定的要求，比如数据完整性好、数据的冗余性少、属性之间的相关性小，然而，实际系统中的数据一般都不具有完整性、冗余性和模糊性，很少能直接满足数据挖掘算法的要求。<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;藉此，预处理已经成为数据挖掘系统实现过程中的关键问题。要使挖掘内核更有效地挖掘出知识，就必须为它提供干净、准确、简洁的数据。实践表明，在数据挖掘的过程中，数据预处理的工作量占到整个工作的60%。然而，数据预处理的学习和实践基本上是在统计学等相关专业的专业课程中才涉及，并且实操环节相对比较滞后。<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;因此，本网站提供了一个供广大用户学习数据预处理的平台。本网站是由R语言入门、数据清洗、数据集成、数据变化以及数据规约这五大模块构成。由于本网站所有的实践操作都是基于R语言而实现的，所以对R语言比较陌生的用户可在“R语言入门”模板中了解其基本语法与操作。其余模块都有三个构成元素：理论浏览、代码解释、示例演示，用户可自行根据需要进行学习。<br>
+                </div>
+            </div>
+            </div>
+        </section>
+        <footer class="qui-footerBasic" style="footer-">
+            <p class="switchStyle"><a href="#"><span>重庆交通大学</span></a></p>
+        </footer>
+    </section>
+    <aside class="qui-asides">
+        <section class="qui-aside">
+            <nav class="qui-asideNav">
+                <ul>
+                    <li><a href="./shapanindex.html"><span>首页</span></a></li>
+                    <li id="p1" class="dropdown"><a href="./shapandemo1.html"
+                            class="dropdown-toggle"><span>R语言入门</span><b class="caret"></b></a>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据清洗</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                                <li><a href="./img/-01.html">缺失值识别</a></li>
+                                <li><a href="./img/shapandemo3-02.html">缺失值处理</a></li>
+                                <li><a href="./img/shapandemo3-03.html">异常值识别</a></li>
+                                <li><a href="./img/shapandemo3-04.html">异常值处理</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据集成</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="./shapandemo2-1.html">理论浏览</a></li>
+                            <li><a href="./shapandemo2-2.html">代码解释</a></li>
+                            <li><a href="./shapandemo2-3.html">示例演示</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据变换</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="./shapandemo4-01.html">简单函数变换</a></li>
+                            <li><a href="./shapandemo4-02.html">数据规范化</a></li>
+                            <li><a href="./shapandemo4-03.html">数据离散化</a></li>
+                            <li><a href="./shapandemo4-04.html">属性构造</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据规约</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">choose1</a></li>
+                            <li><a href="#">choose2</a></li>
+                            <li><a href="#">choose3</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+    </aside>
+</body>
+
+</html>
