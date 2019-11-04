@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数据规约</title>
+    <link href="./shapanmin.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <section class="qui-page">
+            <header class="qui-header" style="background: url(./img/首页4.png)">
+                    <h1 style="color: whitesmoke;">数据规约</h1>
+                </header>
+        <section class="container" style="line-height: 25px;">
+                <br><br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1) 主成分分析法<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R语言princomp函数可以做主成分分析，其格式为：<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;princomp(x,cor=FALSE,scores=TRUE,..)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其中，x为数据矩阵或数据框<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cor设定是否使用相关系数矩阵(默认使用协方差阵)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scores设定是否需要需要计算主成分得分(默认不需要)<br>
+                
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;除上述上述介绍的函数外，也可以使用psych程序包中的函数principal()函数对原始数据或者相关系数矩阵做主成分分析，其格式如下：<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;library(psych)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;principal(r, nfactors=.. , rotate= .., scores= ..)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其中，r为相关系数矩阵或者原始数据矩阵<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nfactors设定主成分个数(默认为1)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rotate指定旋转方法(默认为最大方差旋转)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scores设定是否计算主成分得分(默认不需要)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所谓的旋转方法是一系列将主成分载荷阵变得更加易于理解的数学方法，旋转方法包括选择成分不相关的正交旋转和 主成分之间相关的斜角旋转；最流行的正交旋转法是方差极大旋转，该方法使得每个主成分只由一组有限的变量来解释（即载荷阵每列只有少数几个很大的载荷，其余都较小）<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2) 决策树归纳<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;语言party程序包中函数ctree()可以实现条件推断决策树，条件推断决策树较经典决策树更优，因为该方法会根据  条件分布测量变量与响应值（分类）之间的相关关系，选择分割节点中要使用的变量。函数ctree()的格式如下：<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;library(party)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ctree(formula, data=..)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其中,formula为模型关系式(y～x，左侧变量为响应值，右侧为测量变量),data为应用公式的数据集<br>
+                
+                
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3) 直方图<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R语言hist函数是用于绘制直方图的函数，通过将值域划分为一定数量的组，展示连续型变量的分布，其格式为：<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hist(x,breaks=..,freq=..)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其中，x为待绘制直方图的数值向量<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;breaks用于如何划分数据<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;freq设定是否根据数据频率绘制直方图，若设置TRUE则根据数据频数进行作图；若设置FALSE则根据数据频率进行作图。(默认为NULL，依据频数作图)<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(4) 抽样<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R语言中可以使用函数sample()进行有放回或者无放回的简单随机抽样，其格式为：<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sample(x,size=..,replace=..,prob=..)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其中，x为抽取样本的数据向量<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size为抽取的样本数<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;replace设定是否重抽样（即有放回抽样或者无放回抽样），设定TRUE表示重抽样（默认FALSE不开启重抽样）；<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prob设置样本被抽中的概率比（默认NULL，不考虑抽样的权重，等概率抽样）。<br>
+                        
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sampling程序包中函数strata()可以对给定数据进行分层抽样，其便利之处在于，可以针对每个层抽取不同数量的样本，其格式为：<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;library(sampling)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;strata(data,stratanames=..,size=..,method=..,..)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其中，data为数据框或矩阵<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stratanames为分层抽样要使用的变量<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size为各层样本数量<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;method设置数据抽样方法，包含四种“srswor”不重置简单随机抽样、“srswr”重置简单随机抽样、“poisson”泊松<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;抽样、“systematic”系统抽样。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;抽样完成后需要使用函数getdata()得到被选为样本的数据，其使用格式如下：<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;getdata(data, m)，其中data为原始数据集；m为被选中作为样本的向量或者数据框<br>
+        </section>
+        <footer class="qui-footerBasic" style="footer-">
+                <p class="switchStyle"><a href="#"><span>重庆交通大学</span></a></p>
+            </footer>
+    </section>
+    <aside class="qui-asides">
+        <section class="qui-aside">
+            <nav class="qui-asideNav">
+                <ul>
+                    <li><a href="./shapanindex.html"><span>首页</span></a></li>
+                    <li id="p1" class="dropdown"><a href="./shapandemo1.html"
+                            class="dropdown-toggle"><span>R语言入门</span><b class="caret"></b></a>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据清洗</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="shapandemo3-01.html">缺失值识别</a></li>
+                            <li><a href="shapandemo3-02.html">缺失值处理</a></li>
+                            <li><a href="shapandemo3-03.html">异常值识别</a></li>
+                            <li><a href="shapandemo3-04.html">异常值处理</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据集成</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                                <li><a href="./shapandemo2-1.html">理论浏览</a></li>
+                                <li><a href="./shapandemo2-2.html">代码解释</a></li>
+                                <li><a href="./shapandemo2-3.html">示例演示</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据变换</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="./shapandemo4-01.html">简单函数变换</a></li>
+                            <li><a href="./shapandemo4-02.html">数据规范化</a></li>
+                            <li><a href="./shapandemo4-03.html">数据离散化</a></li>
+                            <li><a href="./shapandemo4-04.html">属性构造</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据规约</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="./shapandemo5-01.html">理论浏览</a></li>
+                            <li><a href="./shapandemo5-02.html">代码解释</a></li>
+                            <li><a href="./shapandemo5-03.html">示例演示</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+    </aside>
+</body>
+
+</html>

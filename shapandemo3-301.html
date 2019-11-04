@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数据清洗</title>
+    <link href="./shapanmin.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <section class="qui-page">
+        <header class="qui-header" style="background:url(./img/首页6.png) ;">
+            <h1 style="color: whitesmoke;">数据清洗</h1>
+        </header>
+        <section class="container" style="width: 1100px;">
+            <br /><br /><br />
+            <div class="btn-group">
+                <button type="button" class="btn btn-default"><a href="./shapandemo3-301.html">理论浏览</a></button>
+                <button type="button" class="btn btn-default"><a href="./shapandemo3-302.html">代码解释</a></button>
+                <button type="button" class="btn btn-default"><a href="./shapandemo3-303.html">示例演示</a></button>
+            </div>
+            <br><br><br><br>
+            <div id="context1" class="context" style="width: 1000px;line-height: 25px;">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.理论浏览：<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;目前常用的异常值识别方法有：数字异常值法、局部异常因子法（LOF法）、聚类法。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）数字异常值法<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数字异常值方法是一维特征空间中最简单的非参数异常值检测方法，异常值通过计算四分位数范围得到，记25%分位数为,75%分位数为,两者的差值（）为四分位间距，记作IQR,则异常值的计算公式为：<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./img/数据清洗3-01.png" style="margin: 40px; margin-left: 100px;"><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其中k为允许异常值超出四分位间距的倍数，通常设置为1.5，数字异常值识别方法通常借助箱线图实现，箱线图是以上下四分位数为界限画的一个 矩形盒子，中间50%的数据落在盒内，图中标志出中线的位置，默认超过盒长1.5倍之外的数据为异常值点。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2） 局部异常因子法（LOF法）<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;局部异常值法是一种基于概率密度函数识别异常值的算法，其算法原理是将一个点的局部密度与其周围的点的密度相比较，如果该点的密度越低越可能被认为是异常值，该算法的相关定义有：<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d(P,O):点P和点O之间的距离；<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：点P的第k距离，指距离点P第k远的距离（不包括P点）；<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：点P的第k邻域，指点P的第k邻域及其以内的所有点，因此点P的第k邻域中点的个数为；<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:点O到点P的可达距离，其定义的表达式为：<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="./img/数据清洗3-02.png" style="margin: 40px; margin-left: 100px;"><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 由上述可达距离的定义式可知，距离点O最近的k个点，点O到它们的可达距离被认为相等且都等于，点O到其第k距离之外的点的可达距离为两者之间的真实值；<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ：点P的局部可达密度，其定义的数学表达式为：<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img src="./img/数据清洗3-03.png" style="margin: 40px; margin-left: 100px;"><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 局部可达密度是点P的第k邻域内的所有点到点P的可达距离的倒数，用密度作为衡量异常值的指标，考虑如果点P距离周围邻居点较远，那么可达距离就可能取较大值，从而导致局部可达密度较小，将这样的点P认定为异常值，。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;：局部离群因子，该定义旨在通过比较点P邻域内的点的局部可达密度与点P的局部可达密度来对点P是否属于异常值进行判断，其定义式如下：<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="./img/数据清洗3-04.png" style="margin: 40px; margin-left: 100px;"><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 由公式可知，所谓LOF值是点P的第k邻域中点的局部可达密度与点P的局部可达密度的比的平均数。这个数值越接近1，说明点P与其邻域内的点密度相差不大，点P可能与其邻域内的点属于同一簇；如果该值小于1，说明点P的密度高于其邻域内的点；如果该值大于1，说明点P的密度小于其邻域内的点，点P较有可能为异常值。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;值得注意的是LOF法只对数值型数据有效。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (3)聚类法<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用聚类法识别异常值的核心在于，按照某种方式把数据聚成不同的类别，将那些不属于任何一类的数据作为异常值，常用的方法有基于密度的聚类DBSCAN法和基于k-means算法的异常值识别法。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这里主要介绍基于k-means算法的异常值识别方法的原理：将所有数据分为k组，通过将它们分配到最近的聚类中心，然后，计算每个对象到聚类中心的距离，并选择最大的距离作为异常值。</div>
+        </section>
+        <footer class="qui-footerBasic" style="footer-">
+                <p class="switchStyle"><a href="#"><span>重庆交通大学</span></a></p>
+            </footer>
+    </section>
+
+    <aside class="qui-asides">
+        <section class="qui-aside">
+            <nav class="qui-asideNav">
+                <ul>
+                    <li><a href="./shapanindex.html"><span>首页</span></a></li>
+                    <li id="p1" class="dropdown"><a href="./shapandemo1.html"
+                            class="dropdown-toggle"><span>R语言入门</span><b class="caret"></b></a>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据清洗</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                                <li><a href="shapandemo3-01.html">缺失值识别</a></li>
+                                <li><a href="shapandemo3-02.html">缺失值处理</a></li>
+                                <li><a href="shapandemo3-03.html">异常值识别</a></li>
+                                <li><a href="shapandemo3-04.html">异常值处理</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据集成</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="./shapandemo2-1.html">理论浏览</a></li>
+                            <li><a href="./shapandemo2-2.html">代码解释</a></li>
+                            <li><a href="./shapandemo2-3.html">示例演示</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据变换</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="./shapandemo4-01.html">简单函数变换</a></li>
+                            <li><a href="./shapandemo4-02.html">数据规范化</a></li>
+                            <li><a href="./shapandemo4-03.html">数据离散化</a></li>
+                            <li><a href="./shapandemo4-04.html">属性构造</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据规约</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                                <li><a href="./shapandemo5-01.html">理论浏览</a></li>
+                                <li><a href="./shapandemo5-02.html">代码解释</a></li>
+                                <li><a href="./shapandemo5-03.html">示例演示</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+    </aside>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数据清洗</title>
+    <link href="./shapanmin.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <section class="qui-page">
+        <header class="qui-header" style="background:url(./img/首页6.png) ;">
+            <h1 style="color: whitesmoke;">数据清洗</h1>
+        </header>
+        <section class="container" style="width: 1100px;">
+            <br /><br /><br />
+            <div class="btn-group">
+                <button type="button" class="btn btn-default"><a href="./shapandemo3-101.html">理论浏览</a></button>
+                <button type="button" class="btn btn-default"><a href="./shapandemo3-102.html">代码解释</a></button>
+                <button type="button" class="btn btn-default"><a href="./shapandemo3-103.html">示例演示</a></button>
+            </div>
+            <br><br><br><br>
+            <div id="context2" class="context" style="width: 1000px; line-height: 25px;">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）函数查找缺失值<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;函数is.na(x)用于检测被测试对象x中是否存在缺失值，其结果是一个相同大小的对象，如果某个位置是缺失值，相应位置返回TRUE，若不是缺失值则返回FALSE。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;函数complete.cases()可以用来识别矩阵或数据框中没有缺失值的行。如果每行都包含完整的实例，则返回TRUE；如果每行含有一个或多个缺失值，则返回FALSE。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）列表显示缺失值<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mice包中的md.pattern()函数可以生成一个以矩阵或者数据框形式展示缺失值模式的表格，表格以1和0显示缺失值模式，对返回的缺失值模式的解读结合示例更易理解。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）图形探究缺失值<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIM包中提供了大量能可视化数据集中缺失值模式的函数，如：aggr()、matrixplot()和
+                scattMiss()等。这里主要介绍函数aggr()，形式如下：<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;library（VIM）<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;aggr(x, delimiter = NULL, plot = TRUE, ...)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;该函数通过绘制两个图形展现出每个变量的缺失值数目和每个变量组合的缺失值数目。其中x是数据集，可以是向量、矩阵或者数据框；delimiter是限制器，默认无给定的插补指数，主要用于区分变量和插补变量的插补指数，如果给定插补指数，则突出显示其对应插补变量；plot是画图操作，默认画图；还有众多关于图形的命令参数，可调用help(aggr)查看。<br>
+            </div>
+        </section>
+        <footer class="qui-footerBasic">
+                <p class="switchStyle"><a href="#"><span>重庆交通大学</span></a></p>
+            </footer>
+    </section>
+
+    <aside class="qui-asides">
+        <section class="qui-aside">
+            <nav class="qui-asideNav">
+                <ul>
+                    <li><a href="./shapanindex.html"><span>首页</span></a></li>
+                    <li id="p1" class="dropdown"><a href="./shapandemo1.html"
+                            class="dropdown-toggle"><span>R语言入门</span><b class="caret"></b></a>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据清洗</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                                <li><a href="shapandemo3-01.html">缺失值识别</a></li>
+                                <li><a href="shapandemo3-02.html">缺失值处理</a></li>
+                                <li><a href="shapandemo3-03.html">异常值识别</a></li>
+                                <li><a href="shapandemo3-04.html">异常值处理</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据集成</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="./shapandemo2-1.html">理论浏览</a></li>
+                            <li><a href="./shapandemo2-2.html">代码解释</a></li>
+                            <li><a href="./shapandemo2-3.html">示例演示</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据变换</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="./shapandemo4-01.html">简单函数变换</a></li>
+                            <li><a href="./shapandemo4-02.html">数据规范化</a></li>
+                            <li><a href="./shapandemo4-03.html">数据离散化</a></li>
+                            <li><a href="./shapandemo4-04.html">属性构造</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据规约</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                                <li><a href="./shapandemo5-01.html">理论浏览</a></li>
+                                <li><a href="./shapandemo5-02.html">代码解释</a></li>
+                                <li><a href="./shapandemo5-03.html">示例演示</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+    </aside>
+
+</body>
+
+</html>

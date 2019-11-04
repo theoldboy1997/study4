@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>R语言入门</title>
+    <link href="./shapanmin.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+    body {
+        position: relative;
+        flex-flow: block;
+    }
+</style>
+
+<body>
+    <section class="qui-page">
+        <header class="qui-header" style="background: url(./img/首页4.png)">
+            <h1 style="color: whitesmoke;">R语言入门</h1>
+        </header>
+        <section class="container">
+            <div class="plcRouteList">
+                <section class="que-page" style="line-height: 25px;">
+                    <br>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;随着时代的发展，可获取的数据量呈指数级增长，数据分析科学的发展也一直与数据的爆炸式增长。而R语言由于它简洁、可值性强等特点深受数据分析师的欢迎。为了让更多小伙伴了解与掌握R语言，本网站提供了一些有关R语言的入门介绍，方便用户快速熟悉R语言。
+                    </p>
+                </section>
+                <section class="container" style="line-height: 25px;">
+                    <h2><a href="https://blog.csdn.net/beauty0522/article/details/82560024">一、R/Rstuio安装和介绍</a></h2>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R和Rstuio两者在功能实现上是完全一致的，但Rstuio对于新手来说会更加友好一些.一方面由于它会自动提示你可能输入的代码，另一方面它的使用界面也R更加高级、舒适。
+                    </p>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下载并安装完成后，打开Rstuio，界面显示如下：</p><br />
+                    <img src="./img/r1.png" style="margin-left: 100px;">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户在代码编辑区可编写R语言代码脚本，右上角的“Run”按钮即可执行代码，执行的代码会在控制台显现，并输出结果；当用户读取数据时，可在工作空间内点击查看数据的内部详细情况；当用户输入作图命令时，图片会在右下角的作图去显示出来。
+                    </p><br />
+                    <h2>二、包的简要介绍</h2>
+                    <p>
+                        <ul type="1">
+                            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;什么是R包，为什么要装它？</li>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所谓的R包，就是一个把R函数、数据、预编译代码以一种定义完善的格式组成在一起的集合。当用户需要某个函数执行命令时，如果没有安装相应的包，那么程序将会报错。R中也有一些自带的包(如datasets,graphics,stats等包)，<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当然，要想进行更加高端的操作，则需要安装新包来实现。<br />
+                            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;怎样安装并调用包？</li>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在R中包只需要安装一次(也可重复安装)，但若要执行命令，必须每次使用<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前调用包。安装和调用包的命令如下：<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;安装命令：install.packages("包的名称")<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;调用命令：library(包的名称)<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此外使用命令help(函数名称)或者？(函数名称)则可查看有关函数的用法<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用命令help(package="包的名称")可以输出某个包的简单描述以及包中的函数名称<br />
+                        </ul>
+                    </p><br />
+                    <h2>三、工作环境设置</h2>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R中的工作环境(路径)存储着用户定义的对象(向量、矩阵、函数等)。当在R的工作环境下，读入或读出数据将会显得非常方便。<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例如：在R中读取CSV文件时，若CSV文件不在R的工作路径下时，则代码为：data=read.csv("..//..//文件名.csv"),引号内部需要输入CSV文件所存放的地址；而当CSV文件在R的工作路径下时，代码则可简化为data=read.csv("文件名.csv").并且，由于一些格式原因，第一种方法很有可能会读取失败，所及建议大家在读取数据前更改工作路径。那么如何查看或更改工作路径呢？<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;查看当前工作路径：getwd()<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更改工作路径有两种方法：<br />
+                        <ul type="1">
+                            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.setwd("用户准备修改的工作路径")</li>
+                            <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.在R中点击文件-改变工作目录，直接选择用户想要更改的工作目录</li>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;此外，在Rstudio中也有更加人性化的读取方式：点击File-import
+                            dataset，直接选择需要读取的文件即可。<br />
+                        </ul>
+                    </p><br />
+                    <h2>四、常用错误与语句说明</h2>
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在R语言编程中，经常会有一些细枝末节的错误，导致程序运行失败。在此，归纳总结了一些常见错误，并提供了一些在其他模块中常用的语句说明。<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1)常见的语句错误<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.字母大小写，括号或标点的中英文输入。有时候程序可能仅因为一个英文状态下的括号被用户输成了中文状态下的括号而运行失败。所以，用户在输写代码时应时刻注意这些小细节。<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.忘记使用必要的引号。在R中，用户在下载包的时候，必须使用引号，否则就会报错。此外，在调用地址时，引号也是必须的<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.重复使用相同变量名。在R中，只要工作窗口不关闭，那么用户所有运行的结果都会有保存。例如：当用户将数据保存至变量data中，即使清空窗口，data中仍会保存之前所储存的数据。这时，如果用户再将其他数据保存至data中，则会自动覆盖之前的数据，最终可能因数据不同而导致程序报错。<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;事实上，R中的报错的信息大多数都是模糊的，有时甚至并不报错，但不输出结果！这就需要用户在学习中不断总结归纳错误的原因，以此来减少程序报错。<br />
+                        <br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2)常用的语句说明<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R中有许多存储数据对象类型，包括向量、矩阵、数据框等。而在大多数情况下，数据都是存放在矩阵或数据框data中，这时从中提取数据显得尤为重要。以下就列举了一些常用提取矩阵或数据框中元素的语句。<br />
+                        
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.data[a,b]表示提取data中第a行第b列的数据。需注意的是:a和b不能超过data的行数与列数<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.data[a,]表示提取data中第a行的全部数据，data[,b]表示提取data中第b列的全部数据；data[a:b,]表示提取data中第a行到第b行所有的数据；data[,a:b]表示提取data中第a列到第b列所有的数据<br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.当data中有一系列列变量名时，例如id、age、bmi等.提取age(年龄)这一列的数据还可以使用这种方式data$age.通用格式为data$变量名
+                    </p><br />
+                </section>
+            </div>
+        </section>
+        <footer class="qui-footerBasic">
+            <p class="switchStyle"><a href="#"><span>重庆交通大学</span></a></p>
+        </footer>
+    </section>
+    <aside class="qui-asides">
+        <section class="qui-aside">
+            <nav class="qui-asideNav">
+                <ul>
+                    <li><a href="./shapanindex.html"><span>首页</span></a></li>
+                    <li id="p1" class="dropdown"><a href="./shapandemo1.html" class="dropdown-toggle"
+                            data-toggle="dropdown"><span>R语言入门</span><b class="caret"></b></a>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据清洗</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                                <li><a href="shapandemo3-01.html">缺失值识别</a></li>
+                                <li><a href="shapandemo3-02.html">缺失值处理</a></li>
+                                <li><a href="shapandemo3-03.html">异常值识别</a></li>
+                                <li><a href="shapandemo3-04.html">异常值处理</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据集成</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                                <li><a href="./shapandemo2-1.html">理论浏览</a></li>
+                                <li><a href="./shapandemo2-2.html">代码解释</a></li>
+                                <li><a href="./shapandemo2-3.html">示例演示</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据变换</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="./shapandemo4-01.html">简单函数变换</a></li>
+                            <li><a href="./shapandemo4-02.html">数据规范化</a></li>
+                            <li><a href="./shapandemo4-03.html">数据离散化</a></li>
+                            <li><a href="./shapandemo4-04.html">属性构造</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据规约</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                                <li><a href="./shapandemo5-01.html">理论浏览</a></li>
+                                <li><a href="./shapandemo5-02.html">代码解释</a></li>
+                                <li><a href="./shapandemo5-03.html">示例演示</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+    </aside>
+</body>
+
+</html>

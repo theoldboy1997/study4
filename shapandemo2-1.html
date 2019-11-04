@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数据集成</title>
+    <link href="./shapanmin.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <section class="qui-page">
+            <header class="qui-header" style="background: url(./img/首页4.png)">
+                    <h1 style="color: whitesmoke;">数据集成</h1>
+                </header>
+        <section class="container" style="line-height: 25px;">
+            <div>
+               <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;数据挖掘的数据往往分布在不同的数据源中，数据集成就是将多个数据源合并存放在一个一致的的数据存储中的过程。而在R中，数据集成主要体现在数据集的合并，大体上可分为纵向合并和横向合并。<br>
+            </div>
+            <h3>1 纵向合并</h3>
+            <div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在实际数据分析的过程中，特别是在时间序列分析中，我们通常需要一段连续时间内变量的数据来对实际问题进行分析与处理。此时，对具有相同列变量的多个数据集进行纵向合并就显得尤为重要。而根据实际，纵向合并又可分为直接纵向合并与间接纵向合并。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）直接纵向合并<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当具有相同列变量的多个数据集没有冗余字符时，就可以对其进行直接纵向合并。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）间接纵向合并<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;事实上，在实际数据合并的过程中，数据往往是从网上爬取的，数据集的内容是夹杂着一些冗余信息的，如数据集的来源、时期等。此时，为了去除这些冗余信息，需要对原数据集进行一些处理才能进行纵向合并，即间接纵向合并。<br>
+            </div>
+            <h3>2 横向合并</h3>
+            <div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;相比于纵向合并，横向合并所涉及的情况会显得更加复杂一些，合并方式大体可分为内连接、左外连接、右外连接以及全连接，这四种连接方式的图示:<br>
+                <img src="./img/数据集成1-01.png" style=" margin-left:300px; width: 500px; height: 400px;"><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A、B是两个不同的数据集。当确定数据集A和B中需要合并的字段时，内连接式合并则是合并数据集A和数据集B中的交集部分；左/右外连接式合并则是合并数据集A/B中的部分；全连接式合并则是合并数据集A、B所有的部分。
+
+            </div>
+        </section>
+        <footer class="qui-footerBasic" style="footer-">
+                <p class="switchStyle"><a href="#"><span>重庆交通大学</span></a></p>
+            </footer>
+    </section>
+    <aside class="qui-asides">
+        <section class="qui-aside">
+            <nav class="qui-asideNav">
+                <ul>
+                    <li><a href="./shapanindex.html"><span>首页</span></a></li>
+                    <li id="p1" class="dropdown"><a href="./shapandemo1.html"
+                            class="dropdown-toggle"><span>R语言入门</span><b class="caret"></b></a>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据清洗</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="shapandemo3-01.html">缺失值识别</a></li>
+                            <li><a href="shapandemo3-02.html">缺失值处理</a></li>
+                            <li><a href="shapandemo3-03.html">异常值识别</a></li>
+                            <li><a href="shapandemo3-04.html">异常值处理</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据集成</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                                <li><a href="./shapandemo2-1.html">理论浏览</a></li>
+                                <li><a href="./shapandemo2-2.html">代码解释</a></li>
+                                <li><a href="./shapandemo2-3.html">示例演示</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据变换</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="./shapandemo4-01.html">简单函数变换</a></li>
+                            <li><a href="./shapandemo4-02.html">数据规范化</a></li>
+                            <li><a href="./shapandemo4-03.html">数据离散化</a></li>
+                            <li><a href="./shapandemo4-04.html">属性构造</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据规约</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                                <li><a href="./shapandemo5-01.html">理论浏览</a></li>
+                                <li><a href="./shapandemo5-02.html">代码解释</a></li>
+                                <li><a href="./shapandemo5-03.html">示例演示</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+    </aside>
+</body>
+
+</html>

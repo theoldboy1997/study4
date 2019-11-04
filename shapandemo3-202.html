@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数据清洗</title>
+    <link href="./shapanmin.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <section class="qui-page">
+        <header class="qui-header" style="background:url(./img/首页6.png) ;">
+            <h1 style="color: whitesmoke;">数据清洗</h1>
+        </header>
+        <section class="container" style="width: 1100px;">
+            <br /><br /><br />
+            <div class="btn-group">
+                <button type="button" class="btn btn-default"><a href="./shapandemo3-201.html">理论浏览</a></button>
+                <button type="button" class="btn btn-default"><a href="./shapandemo3-202.html">代码解释</a></button>
+                <button type="button" class="btn btn-default"><a href="./shapandemo3-203.html">示例演示</a></button>
+            </div>
+            <br><br><br><br>
+            <div id="context1" class="context" style="width: 1000px;line-height: 25px;">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1) 删除法<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;函数na.omit()可以删除含有缺失数据的行，运行结果为不含缺失值的数据集：<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newdata = na.omit(mydata)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上述代码newdata中存储的是删除了mydata中所有包含缺失值的行的结果，同样的结果可以用函数complete.cases()实现：<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;newdata = mydata[complete.cases(mydata),]<br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2)  均值/中位数/众数插补法<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;采用Hmisc程序包中impute()函数可以对缺失值进行简单插值，形式如下：<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;library(Hmisc)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;impute(x, fun=median, ...)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x是需要插补的向量。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fun是用于计算插补值的函数名，默认为median,对于数值型对象，默认用中位数（median）作为插补值，也可以将其指定为均值（mean）；对于因子型对象，默认会用出现频率最高的类别作为插补值；除此之外，可以将插补值指定为单个值或向量（如果对象是因子型，则指定字符），也可以用字符串“random”生成随机值进行插补，且这些随机值不是一定相等的；<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;另外，对于数值型对象，没有直接求众数的函数，需要先计算出众数，再用特定值进行填充。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;示例中使用的table()函数和sort()函数用法如下：<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;table(data),其中data可以为向量、矩阵或数据框等，返回值为data中各个元素出现的频次<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sort(data),其中data可以为向量、矩阵或数据框(须指明对哪一列进行排序)，返回的结果为各个元素按一定顺序排列，默认升序排列。<br>               
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3)多重插补法<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;R中可以利用Amelia、mice和mi包来执行这些操作，这里重点介绍mice包中提供的方法。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;函数mice()首先从一个包含缺失值的数据集开始，返回一个包含多个（默认为5个）完整数据集的对象，每一个完整的数据集都是通过对原始数据中的缺失值进行插补而生成的；然后，with()函数依此对每个完整的数据集应用统计模型（如线性模型或广义线性模型）；最后，pool()函数将这些单独的结果整合为一组结果。mice包操作过程具体如下图所示:<br>    
+                <img src="./img/数据清洗2-02.png" style="margin: 40px; margin-left: 100px;"><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;基于mice()包的多重插补通常符合下述分析过程：<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;library(mice)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imp=mice(data,m,method,…)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fit=with(imp,analysis)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pooled=pool(fit)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;summary(pooled)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mice()函数中,data为数据集；m为生成完整数据集的个数；method为插补方法，默认为pmm(预测均值匹配)，还有其他插补方法，比如norm(贝叶斯线性回归)、norm.boot(基于bootstrap的线性回归)、norm.predict(线性回归预测)、cart(分类回归树)、rf(随机森林)等，在R语言中调用help(mice)可以看到更多可用的方法，并且要注意其中注明的不同插补方法适用的变量类型。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with()函数中，imp是包含m个插补数据集的列表对象；analysis是用于设定m个插补数据集的统计分析方法的表达式括做线性回归模型的lm()函数、做广义线性模型的glm()函数、做广义可加模型的gam()函数和做负二项模型的nbrm()函数，需要注意的是表达式中,～左边是响应变量，右边是预测变量（用+分隔符隔开）。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pool()函数中，fit是包含m个单独的统计分析结果的列表对象；经pool()函数处理过后，结果是包含这m个统计分析平均结果的列表对象。<br>
+            </div>
+        </section>
+        <footer class="qui-footerBasic" style="footer-">
+                <p class="switchStyle"><a href="#"><span>重庆交通大学</span></a></p>
+            </footer>
+    </section>
+
+    <aside class="qui-asides">
+        <section class="qui-aside">
+            <nav class="qui-asideNav">
+                <ul>
+                    <li><a href="./shapanindex.html"><span>首页</span></a></li>
+                    <li id="p1" class="dropdown"><a href="./shapandemo1.html"
+                            class="dropdown-toggle"><span>R语言入门</span><b class="caret"></b></a>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据清洗</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                                <li><a href="shapandemo3-01.html">缺失值识别</a></li>
+                                <li><a href="shapandemo3-02.html">缺失值处理</a></li>
+                                <li><a href="shapandemo3-03.html">异常值识别</a></li>
+                                <li><a href="shapandemo3-04.html">异常值处理</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据集成</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="./shapandemo2-1.html">理论浏览</a></li>
+                            <li><a href="./shapandemo2-2.html">代码解释</a></li>
+                            <li><a href="./shapandemo2-3.html">示例演示</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据变换</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="./shapandemo4-01.html">简单函数变换</a></li>
+                            <li><a href="./shapandemo4-02.html">数据规范化</a></li>
+                            <li><a href="./shapandemo4-03.html">数据离散化</a></li>
+                            <li><a href="./shapandemo4-04.html">属性构造</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据规约</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                                <li><a href="./shapandemo5-01.html">理论浏览</a></li>
+                                <li><a href="./shapandemo5-02.html">代码解释</a></li>
+                                <li><a href="./shapandemo5-03.html">示例演示</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+    </aside>
+</body>
+
+</html>

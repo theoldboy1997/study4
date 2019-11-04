@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数据变换</title>
+    <link href="./shapanmin.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <section class="qui-page">
+        <header class="qui-header" style="background:url(./img/首页6.png) ;">
+            <h1 style="color: whitesmoke;">数据变换</h1>
+        </header>
+        <section class="container" style="width: 1100px;">
+            <br /><br /><br />
+            <div class="btn-group">
+                <button type="button" class="btn btn-default"><a href="./shapandemo4-101.html">理论浏览</a></button>
+                <button type="button" class="btn btn-default"><a href="./shapandemo4-102.html">代码解释</a></button>
+                <button type="button" class="btn btn-default"><a href="./shapandemo4-103.html">示例演示</a></button>
+            </div>
+            <br><br><br><br>
+            <div id="context1" class="context" style="width: 1000px;line-height: 25px;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 简单函数变换是对原始数据进行某些数学函数变换，常用的变换包括平方、开方、对数变换、差分运算等，即：<br>
+                    <img src="./img/数据变换1-01.png" style=" margin-left: 300px;"><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;简单函数变换常用来将不具有正态分布的数据变成具有正态分布的数据。在时间序列分析中，有时简单的对数变换或差分运算就可以将非平稳序列转换成平稳序列；在数据挖掘中，简单函数变换更有需要，比如各种口红的评论数的取值范围为几十条条到上万条，这是一个较大的区间，使用对数变换对其进行压缩是一种常用的变换处理方法。<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）对数变换<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对数变换是较为常用的简单函数变换，需要注意的是当待变换的数值为0时，对这样的数据进行对 数变换没有意义，因此要根据具体情况采取措施防止这种情况的发生。<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）BOX-COX变换<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;综合对数变换、平方根变换和平方变换，可归纳为一种应用十分广泛的变换族即为BOX-COX变换，它是对因变量所作如下变换：<br>  
+                    <img src="./img/数据变换1-02.png" style=" margin-left: 350px;"><br>                 
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其中，<img src="./img/数据变换字符1.png" style="width: 20px;height: 20px;">是待定参数，此变换要求y的各分量都大于0，否则可用下面推广的BOX-COX变换”<br>
+                    <img src="./img/数据变换1-03.png" style=" margin-left: 350px;"><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 即先对y做平移，使得y+a的各个分量都大于0后再做BOX-COX变换<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当<img src="./img/数据变换字符1.png" style="width: 20px;height: 20px;">=0时，则对应的是对数变换；当<img src="./img/数据变换字符1.png" style="width: 20px;height: 20px;">=0.5时，则对应的是平方根变换；当<img src="./img/数据变换字符1.png" style="width: 20px;height: 20px;">=2时，则对应的是平方变换。<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过此变换，我们寻找适当的<img src="./img/数据变换字符1.png" style="width: 20px;height: 20px;">，使得变换后<br>
+                    <img src="./img/数据变换1-04.png" style=" margin-left: 350px;"><br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从而符合线性回归模型的各种假设：误差各分量等方差、不相关等。事实上，BOX-COX变换不仅可以处理异方差问题，还能处理自相关、误差非正态、回归函数非线性等情况。<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）差分运算<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在时间序列分析中，在进行AR、MA或ARMA等模型建模时，通常需要序列是平稳的(时序图呈现在某值附近随机波动即可认为平稳)。然而，在实际建模过程中，非平稳序列占大多数，此时就需要我们通过差分运算将其转化为平稳序列。<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 差分运算分为两种：p阶差分和k步差分。相距一期的两个序列值之间的减法运算称为一阶差分，对1阶差分后的序列再进行一次1阶差分运算则称为2阶差分..以此类推，对p-1阶差分运算后序列再进行一次1阶差分运算则称为p阶差分；而相距k期的两个序列值之间的减法运算则称为k步差分。<br>
+                     <br>
+            </div>
+        </section>
+        <footer class="qui-footerBasic" style="footer-">
+                <p class="switchStyle"><a href="#"><span>重庆交通大学</span></a></p>
+            </footer>
+    </section>
+
+    <aside class="qui-asides">
+        <section class="qui-aside">
+            <nav class="qui-asideNav">
+                <ul>
+                    <li><a href="./shapanindex.html"><span>首页</span></a></li>
+                    <li id="p1" class="dropdown"><a href="./shapandemo1.html"
+                            class="dropdown-toggle"><span>R语言入门</span><b class="caret"></b></a>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据清洗</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                                <li><a href="shapandemo3-01.html">缺失值识别</a></li>
+                                <li><a href="shapandemo3-02.html">缺失值处理</a></li>
+                                <li><a href="shapandemo3-03.html">异常值识别</a></li>
+                                <li><a href="shapandemo3-04.html">异常值处理</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据集成</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="./shapandemo2-1.html">理论浏览</a></li>
+                            <li><a href="./shapandemo2-2.html">代码解释</a></li>
+                            <li><a href="./shapandemo2-3.html">示例演示</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据变换</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="./shapandemo4-01.html">简单函数变换</a></li>
+                            <li><a href="./shapandemo4-02.html">数据规范化</a></li>
+                            <li><a href="./shapandemo4-03.html">数据离散化</a></li>
+                            <li><a href="./shapandemo4-04.html">属性构造</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据规约</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                                <li><a href="./shapandemo5-01.html">理论浏览</a></li>
+                                <li><a href="./shapandemo5-02.html">代码解释</a></li>
+                                <li><a href="./shapandemo5-03.html">示例演示</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+    </aside>
+</body>
+
+</html>

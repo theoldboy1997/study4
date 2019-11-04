@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数据集成</title>
+    <link href="./shapanmin.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <section class="qui-page">
+            <header class="qui-header" style="background: url(./img/首页4.png)">
+                    <h1 style="color: whitesmoke;">数据集成</h1>
+                </header>
+        <section class="container" style="line-height: 25px;">
+            <h3>(1) 直接纵向合并</h3>
+            <div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在R中构造两个数据集sduent1,sduent2，列变量分别为ID、name，由于所构建的数据集的列变量名都相同，使用函数rbind()将两个数据集纵向合并，代码如下：<br><br>
+                <img src="./img/数据集成3-01.png" style=" margin-left: 100px;"><br>
+                <img src="./img/数据集成3-02.png" style=" margin-left: 100px;"><br>
+            </div>
+            <h3>(2)间接纵向合并</h3>
+            <div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;使用的数据集是来自某股票软件2017/11至2019/2的300个来自不同股份的证券数据，其中包括日期、开盘价、最高价、最低价、收盘价、成交量以及成交额这六个变量。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过观察数据发现，所有的证券数据第一行与最后一行都有其证券名称以及数据来源，如下图。<br><br>
+               <img src="./img/数据集成3-03.png" style=" margin-left: 100px;"><br>
+               <img src="./img/数据集成3-04.png" style=" margin-left: 100px;"><br><br>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;显然，在数据合并的过程中，这些信息是没有价值的，因此在进行数据合并的过程中需要根据具体情况对原数据稍加处理。运行结果如下：<br>
+               <img src="./img/数据集成3-05.png" style="margin: 40px; margin-left: 100px;"><br>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最终合并的结果如下：<br><br>
+               <img src="./img/数据集成3-06.png" style=" margin-left: 100px;"><br>
+               <img src="./img/数据集成3-07.png" style=" margin-left: 100px;"><br><br>
+            </div>
+            <h3>(3)横向合并</h3>
+            <div>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在R中构建两个数据集x和y，列变量名分别为name、instrument和name、band，以name为合并字段，运行结果如下：<br>
+                <img src="./img/数据集成3-08.png" style="margin: 40px; margin-left: 100px;"><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.内连接(只合并交集)<br>
+                <img src="./img/数据集成3-09.png" style="margin: 40px; margin-left: 100px;"><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对比原始的两个数据集与内连接的合并结果，数据集x和y中共同都存在的变量name为John,Paul,George以及Ringo,达到了只合并交集的作用。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.左外连接<br>
+                <img src="./img/数据集成3-10.png" style="margin: 40px; margin-left: 100px;"><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对比原始的两个数据集与左外连接的合并结果，左外连接是以数据集x中的<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;变量name进行拼接的；需要注意的是：Stuart与Pete在y中并没有对应的band元素,故join函数会自动以缺失值NA补全数据集。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3.右外连接<br>
+                <img src="./img/数据集成3-11.png" style="margin: 40px; margin-left: 100px;"><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对比原始的两个数据集与右外连接的合并结果，右外连接是以数据集y中的变量name进行合并,同样由于Brian在数据集x中insrument变量没有对应的元素,故以缺失值NA补全数据集。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4.全连接<br>
+                <img src="./img/数据集成3-12.png" style="margin: 40px; margin-left: 100px;" ><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对比原始的两个数据集与全连接的合并结果，全连接是以变量name为匹配字段，将数据集x和y进行横向合并，缺失值以NA补齐。<br>
+
+            </div>
+        </section>
+        <footer class="qui-footerBasic" style="footer-">
+                <p class="switchStyle"><a href="#"><span>重庆交通大学</span></a></p>
+            </footer>
+    </section>
+    <aside class="qui-asides">
+        <section class="qui-aside">
+            <nav class="qui-asideNav">
+                <ul>
+                    <li><a href="./shapanindex.html"><span>首页</span></a></li>
+                    <li id="p1" class="dropdown"><a href="./shapandemo1.html"
+                            class="dropdown-toggle"><span>R语言入门</span><b class="caret"></b></a>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据清洗</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                                <li><a href="shapandemo3-01.html">缺失值识别</a></li>
+                            <li><a href="shapandemo3-02.html">缺失值处理</a></li>
+                            <li><a href="shapandemo3-03.html">异常值识别</a></li>
+                            <li><a href="shapandemo3-04.html">异常值处理</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据集成</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="./shapandemo2-1.html">理论浏览</a></li>
+                            <li><a href="./shapandemo2-2.html">代码解释</a></li>
+                            <li><a href="./shapandemo2-3.html">示例演示</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据变换</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="./shapandemo4-01.html">简单函数变换</a></li>
+                            <li><a href="./shapandemo4-02.html">数据规范化</a></li>
+                            <li><a href="./shapandemo4-03.html">数据离散化</a></li>
+                            <li><a href="./shapandemo4-04.html">属性构造</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据规约</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                                <li><a href="./shapandemo5-01.html">理论浏览</a></li>
+                                <li><a href="./shapandemo5-02.html">代码解释</a></li>
+                                <li><a href="./shapandemo5-03.html">示例演示</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+    </aside>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数据清洗</title>
+    <link href="./shapanmin.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <section class="qui-page">
+        <header class="qui-header" style="background:url(./img/首页6.png) ;">
+            <h1 style="color: whitesmoke;">数据清洗</h1>
+        </header>
+        <section class="container" style="width: 1100px;">
+            <br /><br /><br />
+            <div class="btn-group">
+                <button type="button" class="btn btn-default"><a href="./shapandemo3-101.html">理论浏览</a></button>
+                <button type="button" class="btn btn-default"><a href="./shapandemo3-102.html">代码解释</a></button>
+                <button type="button" class="btn btn-default"><a href="./shapandemo3-103.html">示例演示</a></button>
+            </div>
+            <br><br><br><br>
+            <div id="context3" class="context" style="width: 1000px; line-height: 25px;" >
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1. 函数查找缺失值<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以mice包提供的nhanes2数据集为演示示例，该数据集是一个含有小规模缺失值的数据集，包括age(年龄段)、bmi(身体指数)、hyp(是否患高血压)、chl(血清胆固醇总量)四个变量，其中，age和hyp为分类变量，
+                bmi和chl为定量变量。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将函数is.na()和函数complete.cases()分别应用到数据集nhanes2上，运行结果如下：<br>
+                <img src="./img/数据清洗1-01.png" style=" margin-left: 100px;"><br><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. 列表显示缺失值<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以mice包提供的nhanes2数据集为演示示例，将md.pattern()函数应用到该数据集上，运行结果如下：<br>
+                <img src="./img/数据清洗1-02.png" style=" margin-left: 100px;"><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;运行结果0表示变量的列中存在缺失值，1表示没有缺失值。除最后一行外，每一行代表一种缺失值模式；最后一行表示每个变量包含缺失值的数目；第一列表示各缺失值模式的实例数目；最后一列表示每种模式包含缺失变量的数目。<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                结合nhanes2数据集来看，该数据集存在五种缺失值模式；由最后一列可知，第一行中各变量均不含缺失值，代表“无缺失值”模式，第二行有一个变量含缺失值，代表“除变量chl外不含缺失值”模式，依此类推其他缺失值模式；由第一列可知，数据集中有13条记录不含缺失值，3条记录chl缺失，1条记录bmi缺失，1条记录变量bmi和hyp均含缺失值，7条记录除age外的其余三个变量均含缺失值；由最后一行可知，四个变量(age,hyp,bmi,chl)分别含缺失值数目为：0、8、9、10。因此，该数据集有13条记录不含缺失值，3+1+1+7=12条记录存在缺失值，共包含27个缺失值。<br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3. 图形探究缺失值<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以nhanes2数据集为例，结合函数aggr()的运行结果进行分析说明。<br>
+                <img src="./img/数据清洗1-03.png" style=" margin-left: 100px;"><br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上述代码中参数number（FALSE为默认项）表示是否展示缺失值组合模式的比例或计数，参数prop（TRUE是默认项）表示是否使用比例的形式展示缺失值和缺失值组合模式数量。当设置参数prop=F时得到的结果是缺失值和组合模式的具体数值，本例为了更好地看出缺失信息的占比，以比例的形式展现缺失值情况。运行结果如下：<br>
+                <img src="./img/数据清洗1-04.png" style=" margin-left: 100px;"><br>
+
+            </div>
+        </section>
+        <footer class="qui-footerBasic">
+                <p class="switchStyle"><a href="#"><span>重庆交通大学</span></a></p>
+            </footer>
+    </section>
+
+    <aside class="qui-asides">
+        <section class="qui-aside">
+            <nav class="qui-asideNav">
+                <ul>
+                    <li><a href="./shapanindex.html"><span>首页</span></a></li>
+                    <li id="p1" class="dropdown"><a href="./shapandemo1.html"
+                            class="dropdown-toggle"><span>R语言入门</span><b class="caret"></b></a>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据清洗</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                                <li><a href="shapandemo3-01.html">缺失值识别</a></li>
+                                <li><a href="shapandemo3-02.html">缺失值处理</a></li>
+                                <li><a href="shapandemo3-03.html">异常值识别</a></li>
+                                <li><a href="shapandemo3-04.html">异常值处理</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据集成</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="./shapandemo2-1.html">理论浏览</a></li>
+                            <li><a href="./shapandemo2-2.html">代码解释</a></li>
+                            <li><a href="./shapandemo2-3.html">示例演示</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据变换</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="./shapandemo4-01.html">简单函数变换</a></li>
+                            <li><a href="./shapandemo4-02.html">数据规范化</a></li>
+                            <li><a href="./shapandemo4-03.html">数据离散化</a></li>
+                            <li><a href="./shapandemo4-04.html">属性构造</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>数据规约</span><b
+                                class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                                <li><a href="./shapandemo5-01.html">理论浏览</a></li>
+                                <li><a href="./shapandemo5-02.html">代码解释</a></li>
+                                <li><a href="./shapandemo5-03.html">示例演示</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+    </aside>
+
+</body>
+
+</html>
